@@ -1,0 +1,103 @@
+{% extends 'base_layout.html' %}
+
+{% block customCSS %}
+<link rel="stylesheet" href="{{ url_for('static', filename='assets/css/file.css') }}" />
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <h2>Заказы</h2>
+
+    <!-- Форма для создания заказа -->
+    <form id="createOrderForm">
+        <div class="form-group">
+            <label for="IdCustomer">ID клиента</label>
+            <input type="number" class="form-control" id="IdCustomer" name="IdCustomer" required>
+        </div>
+
+        <div class="form-group">
+            <label for="IdRestaurant">ID ресторана</label>
+            <input type="number" class="form-control" id="IdRestaurant" name="IdRestaurant" required>
+        </div>
+
+        <div class="form-group">
+            <label for="OrderTime">Время заказа</label>
+            <input type="datetime-local" class="form-control" id="OrderTime" name="OrderTime" required>
+        </div>
+
+        <div class="form-group">
+            <label for="DeliveryTimeForecast">Прогноз времени доставки</label>
+            <input type="datetime-local" class="form-control" id="DeliveryTimeForecast" name="DeliveryTimeForecast" required>
+        </div>
+
+        <div class="form-group">
+            <label for="IdCourier">ID курьера</label>
+            <input type="number" class="form-control" id="IdCourier" name="IdCourier" required>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Создать заказ</button>
+    </form>
+    <hr>
+
+    <!-- Таблица для отображения заказов -->
+    <h3>Список заказов</h3>
+    <table id="ordersTable" class="table">
+        <thead>
+            <tr>
+                <th>ID заказа</th>
+                <th>ID клиента</th>
+                <th>ID ресторана</th>
+                <th>Время заказа</th>
+                <th>Прогноз времени доставки</th>
+                <th>ID курьера</th>
+                <th>Действия</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Сюда будут добавляться строки таблицы -->
+        </tbody>
+    </table>
+</div>
+
+<!-- Модальное окно для редактирования заказа -->
+<div id="editOrderModal" class="modal" style="display:none;">
+    <div class="modal-content">
+        <span class="close" onclick="document.getElementById('editOrderModal').style.display='none'">&times;</span>
+        <form id="editOrderForm">
+            <input type="hidden" id="editOrderId" name="IdOrder">
+
+            <div class="form-group">
+                <label for="editIdCustomer">ID клиента</label>
+                <input type="number" class="form-control" id="editIdCustomer" name="IdCustomer">
+            </div>
+
+            <div class="form-group">
+                <label for="editIdRestaurant">ID ресторана</label>
+                <input type="number" class="form-control" id="editIdRestaurant" name="IdRestaurant">
+            </div>
+
+            <div class="form-group">
+                <label for="editOrderTime">Время заказа</label>
+                <input type="datetime-local" class="form-control" id="editOrderTime" name="OrderTime">
+            </div>
+
+            <div class="form-group">
+                <label for="editDeliveryTimeForecast">Прогноз времени доставки</label>
+                <input type="datetime-local" class="form-control" id="editDeliveryTimeForecast" name="DeliveryTimeForecast">
+            </div>
+
+            <div class="form-group">
+                <label for="editIdCourier">ID курьера</label>
+                <input type="number" class="form-control" id="editIdCourier" name="IdCourier">
+            </div>
+
+            <button type="submit" class="btn btn-primary">Сохранить изменения</button>
+        </form>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block customJS %}
+<script src="{{ url_for('static', filename='assets/customJS/order.js') }}"></script>
+{% endblock %}

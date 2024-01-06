@@ -1,0 +1,64 @@
+<head>
+  <!-- Your head content here -->
+</head>
+<body>
+  <style>
+    .scrollable-sidebar {
+      overflow-y: auto; /* Enables vertical scrolling */
+      height: 1000vh; /* Full viewport height */
+      /* Add other styling as needed */
+    }
+  </style>
+
+
+<aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme scrollable-sidebar">
+    <!-- Your sidebar content -->
+</aside>
+
+  <div class="card" style="border-radius: 0px !important">
+    <div class="row justify-content-center mb-2">
+      <div class="col-md-12">
+        <h3 class="text-center mt-5 mb-3"></h3>
+      </div>
+    </div>
+  </div>
+
+  <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme scrollable-sidebar">
+    <!-- Sidebar content here -->
+  </aside>
+<div class="card" style="border-radius: 0px !important">
+  <div class="row justify-content-center mb-2">
+    <div class="col-md-12">
+      <h3 class="text-center mt-5 mb-3"></h3>
+    </div>
+  </div>
+  </div>
+<aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
+  <div class="app-brand demo">
+    <a href="{{ url_for('home_bp.dashboard') }}" class="app-brand-link">
+      <span class="app-brand-logo demo">
+        <img src="{{ url_for('static', filename='assets/img/logo.png') }}" alt="Logo" />
+      </span>
+    </a>
+
+    <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
+      <i class="bx bx-chevron-left bx-sm align-middle"></i>
+    </a>
+  </div>
+
+  <div class="menu-inner-shadow"></div>
+  <ul class="menu-inner py-5">
+    <li class="menu-item {% if 'dashboard' in request.endpoint %} active {% endif %}">
+      <a href="{{ url_for('home_bp.dashboard') }}" class="menu-link">
+        <i class="menu-icon bi bi-person-bounding-box"></i>
+        <div data-i18n="Basic">Dashboard</div>
+      </a>
+    </li>
+  <li class="menu-item {% if 'order' in request.endpoint %} active {% endif %}">
+      <a href="{{ url_for('home_bp.order') }}" class="menu-link">
+        <i class="menu-icon bi bi-file-earmark-spreadsheet-fill"></i>
+        <div data-i18n="Basic">Order</div>
+      </a>
+    </li>
+  </ul>
+</aside>
